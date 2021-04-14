@@ -7,6 +7,8 @@ import {
   ImageBackground,
   TouchableNativeFeedback,
   Platform,
+  Dimensions,
+  useWindowDimensions,
 } from "react-native";
 
 import Colors from "../constants/Colors";
@@ -56,7 +58,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontFamily: "open-sans-bold",
-    fontSize: 22,
+    fontSize: Dimensions.get("window").width > 390 ? 22 : 18,
     color: "white",
     backgroundColor: "rgba(0,0,0,0.3)",
     paddingVertical: 10,

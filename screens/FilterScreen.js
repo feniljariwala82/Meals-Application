@@ -8,8 +8,11 @@ import {
 } from "react-native";
 import { Icon } from "react-native-elements";
 import { Feather, Ionicons } from "@expo/vector-icons";
+import { useDispatch } from "react-redux";
+
 import DefaultText from "../components/DefaultText";
 import Colors from "../constants/Colors";
+import { setFilters } from "../store/actions/mealsAct";
 
 const Filters = (props) => {
   // to avoid unnecessary re-rendering  we are destructuring navigation from props
@@ -19,6 +22,8 @@ const Filters = (props) => {
   const [isVegan, setIsVegan] = useState(false);
   const [isVegetarian, setIsVegetarian] = useState(false);
 
+  const dispatch = useDispatch();
+
   const saveFilters = useCallback(() => {
     const appliedFilters = {
       glutenFree: isGlutenFree,
@@ -26,7 +31,8 @@ const Filters = (props) => {
       vegan: isVegan,
       vegetarian: isVegetarian,
     };
-  }, [isGlutenFree, isLactoseFree, isVegan, isVegetarian]);
+    dispatch(setFilters(appliedFilters));
+  }, [isGlutenFree, isLactoseFree, isVegan, isVegetarian, dispatch]);
 
   useEffect(() => {
     navigation.setParams({ save: saveFilters });

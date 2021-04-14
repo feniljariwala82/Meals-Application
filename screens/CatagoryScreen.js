@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   TouchableNativeFeedback,
   Platform,
+  Dimensions,
 } from "react-native";
 import { Icon } from "react-native-elements";
 
@@ -109,10 +110,10 @@ const styles = StyleSheet.create({
     // for android
     padding: 16,
     justifyContent: "flex-end",
-    alignItems: "center",
   },
   text: {
     fontFamily: "open-sans",
-    fontSize: 22,
+    fontSize: Dimensions.get("window").width > 390 ? 22 : 16,
+    flexShrink: 1,
   },
 });

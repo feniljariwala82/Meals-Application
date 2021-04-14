@@ -3,7 +3,6 @@ import { StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 
 import { CATAGORIES } from "../data/dummy-data";
-
 import MealList from "../components/MealList";
 
 const CatagoryMeals = (props) => {
